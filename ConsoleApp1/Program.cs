@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static ConsoleApp1.Aspect;
 
 namespace ConsoleApp1
 {
@@ -10,6 +7,21 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            int runTimes = 0;
+
+            WhileAspect(true, () =>
+            LogAspect(() =>
+            IgnoreAspect(() =>
+            RetryAspect(2, 3000, () =>
+            {
+                Console.WriteLine($"times: {++runTimes}");
+                Console.WriteLine("step 1");
+                Console.WriteLine("step 2");
+                if (runTimes < 3)
+                    throw new ApplicationException("例外測試");
+                Console.WriteLine("step 3");
+            }))));
         }
+
     }
 }
