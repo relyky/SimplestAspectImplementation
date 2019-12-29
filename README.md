@@ -116,6 +116,7 @@ CatchAspect<ApplicationException>(handleCatch, ()=>
 })));
 ````
 ````Csharp
+/// handler function
 void handleCatch(ApplicationException ex) {
     Console.WriteLine("I got you. → {0}", ex.Message);
     throw ex; // throw out or not
