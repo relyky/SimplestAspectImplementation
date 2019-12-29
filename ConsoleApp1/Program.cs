@@ -12,15 +12,19 @@ namespace ConsoleApp1
             WhileAspect(true, () =>
             LogAspect(() =>
             IgnoreAspect(() =>
+            CatchAspect<ApplicationException>(ex => {
+                Console.WriteLine("I got you. → {0}", ex.Message);
+                throw ex; // throw out or not
+            }, ()=>
             RetryAspect(2, 3000, () =>
             {
                 Console.WriteLine($"times: {++runTimes}");
                 Console.WriteLine("step 1");
                 Console.WriteLine("step 2");
-                if (runTimes < 3)
-                    throw new ApplicationException("例外測試");
+                //if(runTimes < 3) throw new ApplicationException("例外測試");
+                throw new ApplicationException("例外測試");
                 Console.WriteLine("step 3");
-            }))));
+            })))));
         }
 
     }

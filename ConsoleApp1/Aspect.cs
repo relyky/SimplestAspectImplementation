@@ -41,6 +41,23 @@ namespace ConsoleApp1
         }
 
         /// <summary>
+        /// ignore fail.
+        /// </summary>
+        public static void CatchAspect<TException>(Action<TException> catchAction, Action action) 
+            where TException : Exception
+        {
+            try
+            {
+                action();
+            }
+            catch (TException ex)
+            {
+                Console.WriteLine("Catch {0}", ex.GetType().Name);
+                catchAction(ex);
+            }
+        }
+
+        /// <summary>
         /// tracing
         /// </summary>
         public static void LogAspect(Action action)
