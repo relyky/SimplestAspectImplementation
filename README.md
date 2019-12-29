@@ -7,7 +7,8 @@ C#, 最簡易的AOP實作, AOP, Aspect
 好用的 wave 才是好的AOP。   
 讓交錯複雜的碼變得更易讀懂才符合AOP的精神。 
 
-# 成果測試
+# 成果紀錄
+#### 程式碼片段
 ````Csharp
 LogAspect(() =>
 {
@@ -16,6 +17,7 @@ LogAspect(() =>
     Console.WriteLine("step 3");
 });
 ````
+#### 輸出
 <pre>
 BEGIN
 step 1
