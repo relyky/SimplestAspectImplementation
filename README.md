@@ -8,6 +8,21 @@ C#, 最簡易的AOP實作, AOP, Aspect
 讓交錯複雜的碼變得更易讀懂才符合AOP的精神。 
 
 # 成果測試
+````Csharp
+LogAspect(() =>
+{
+    Console.WriteLine("step 1");
+    Console.WriteLine("step 2");
+    Console.WriteLine("step 3");
+});
+````
+<pre>
+BEGIN
+step 1
+step 2
+step 3
+END
+</pre>
 #### 程式碼片段
 ````Csharp
 int runTimes = 0;
