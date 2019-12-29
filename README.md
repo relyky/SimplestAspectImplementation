@@ -114,7 +114,8 @@ CatchAspect<ApplicationException>(handleCatch, ()=>
     throw new ApplicationException("例外測試");
     Console.WriteLine("step 3");
 })));
-
+````
+````Csharp
 void handleCatch(ApplicationException ex) {
     Console.WriteLine("I got you. → {0}", ex.Message);
     throw ex; // throw out or not
