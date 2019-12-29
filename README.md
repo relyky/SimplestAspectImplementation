@@ -6,3 +6,41 @@ C#, 最簡易的AOP實作, AOP, Aspect
 應用 Action 類別的特性。   
 好用的 wave 才是好的AOP。   
 讓交錯複雜的碼變得更易讀懂才符合AOP的精神。 
+
+# 成果測試
+#### 程式碼片段
+````Csharp
+int runTimes = 0;
+
+WhileAspect(true, () =>
+LogAspect(() =>
+IgnoreAspect(() =>
+RetryAspect(2, 3000, () =>
+{
+    Console.WriteLine($"times: {++runTimes}");
+    Console.WriteLine("step 1");
+    Console.WriteLine("step 2");
+    if (runTimes < 3)
+        throw new ApplicationException("例外測試");
+    Console.WriteLine("step 3");
+}))));
+````
+
+#### 輸出
+<pre>
+while true → go
+BEGIN
+times: 1
+step 1
+step 2
+Exception 例外測試 → retry
+times: 2
+step 1
+step 2
+Exception 例外測試 → retry
+times: 3
+step 1
+step 2
+step 3
+END
+</pre>
