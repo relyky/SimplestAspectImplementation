@@ -29,6 +29,15 @@ namespace eTellerKeeper.Aspect
             }
         }
 
+        /// 應用範例
+        /// public string Echo(string msg)
+        /// {
+        ///     string result = null;
+        ///     Weave.Trace("Echo", () => result, () => {
+        ///         result = $"Echo [{msg}] at {DateTime.Now.ToString()}";
+        ///     });
+        ///     return result;
+        /// }        
         public static void Trace(string tag, Func<object> result, Action action)
         {
             try
